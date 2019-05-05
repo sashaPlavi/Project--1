@@ -68,8 +68,32 @@ Output: 2
  */
 var a =[4, 2, 2, -1, 6];
 var min = a[0];
-var minIx =0;
-var i;
+  
+var i=0;
+ var j =0 ;
+var amin = [];
+for(i =1; i < a.length; i ++){
+    if (min > a[i] ){
+        min = a[i];
+        }
+}
+console.log(min);
+
+for( i = 0; i< a.length; i++){
+    if ( min != a[i]){
+        amin [j] = a[i];
+        j++;
+    }
+}
+console.log(amin);
+var minx = amin[0];
+for(i =0; i < amin.length; i ++){
+    if (minx > amin[i] ){
+        minx = amin[i];
+        }
+}
+console.log(minx);
+
 
 
 /* Write a program that calculates the 
@@ -86,8 +110,10 @@ for(i =0; i<a.length; i++){
     }
 }
 console.log(sum)
-
-Write a program that checks if a given array is symmetric. An array is symmetric if it can be read the same way both from the left and the right hand side.   
+/*
+Write a program that checks if a given array is 
+symmetric. An array is symmetric if it can be read 
+the same way both from the left and the right hand side.   
 /* Input array: [2, 4, -2, 7, -2, 4, 2]
 Output: The array is symmetric.
 
