@@ -129,12 +129,17 @@ console.log(multiTable(num));
 /*task6
 Write a function to input temperature in Centigrade and convert to Fahrenheit.
 */
-function convertT(temp){
-    var celsius ;
-    if( celsius == true){
-        temp = (temp * 9/5) + 32;
-    }
+function celsiusToFahrenheit(tempC){
+    var tempF  ;
+     if(typeof tempC === 'number' || isFinite(tempC) ){
+        tempF = 'temperature in fahrenheit is ' +( (tempC * 9/5) + 32);
+     }else{
+         tempF = 'input is not valid';
+     }
+return tempF
 }
+console.log(celsiusToFahrenheit(40));
+ 
 
  
 /*task7
@@ -340,7 +345,7 @@ console.log(bodyMassInd(1.78,80));
 Write a function that takes a list of strings and prints them, one per line, in a rectangular frame.:
 
 For example the list ["Hello", "World", "in", "a", "frame"] gets printed as:
-*********
+*********()
 * Hello *
 * World *
 * in    *
@@ -348,24 +353,62 @@ For example the list ["Hello", "World", "in", "a", "frame"] gets printed as:
 * frame *
 *********
  */
-var dimension = 5;
-for (var i = 0; i < dimension; i++) {
-    
-    var row = "";
-    for (var j = 0; j < dimension; j++) {
-        if (i !== 0 &&
-            i < dimension - 1 &&
-            j !== 0 &&
-            j < dimension - 1
-        ) {
-            row += "  ";
-        } else {
-            row += '* ';
+
+ function messageInframe(messsage){
+     var maxelementLength = message[0].length;
+     var res = '';
+     var numberOfwords= 0;
+     for(var i = 0; i< messsage.length; i++ ){
+         if(message[i].length > maxelementLength){
+             maxelementLength = message[i].length;
+         }
+     }
+     for ( i = 0; i < message.length+4; i++ ){
+         for( var j= 0; j <  maxelementLength +4 ; j++){
+             if( i === 0 || j===0 || i === message.length+2 || j === maxelementLength+2){
+                 res +='*';
+             }else if (j ===1 || j === maxelementLength +2){
+                    res +='';
+             }else if (j === 2 && i < message.length   ){
+                 res += message[numberOfwords++];
+             }
+            }
+            
+        
+            res += '/n';
         }
-    }
-    console.log(row);
-}
-/*
-Write a program that inserts a given element e on the given position p in the array a. If the value of the position is greater than the array length, print the error message. 
+     
+
+   return  res;
+ }
+
+ var message = [ 'zdravo', 'bre'];
+messageInframe(message);
+
+ /*
+Write a program that inserts a given element e on the given position p in the array a. If the value of the position is
+ greater than the array length, print the error message. 
 Input: e = 78, p = 3, a = [2, -2, 33, 12, 5, 8]
 Output: [2, -2, 33, 78, 12, 5, 8]*/
+function insertInArr(someArr, element,position){
+    var res;
+    var newar = [];
+    if (position < someArr.length ){
+       for(var i= 0; i < someArr.length; i++){
+           if ( i === position){
+               newar[i]=element;
+           }else{
+                newar[i]= someArr[i];
+           }
+       } 
+       res = newar;
+         
+    }else{
+        res = 'Error - position is out of range';  
+    }
+
+return res;
+}
+var str = [2, -2, 33, 12, 5, 8];
+console.log(insertInArr(str,78,12));
+
